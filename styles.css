@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #E6D5C8;
+    --text: #0b0b0b; 
+}
+
+body {
+    background-color: var(--background);
+}
+
+#timerContainer {
+    width: 50svw;
+    height: 50svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3svh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text);
+    background-color: var(--background);
+}
+
+#controls {
+    display: flex;
+    flex-direction: row;
+    gap: 5svw;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translateX(-50%);
+}
+
+button {
+    padding: 1rem 3.5rem;
+    border-radius: 3rem;
+    border-style: none;
+    background-color: var(--text);
+    color: var(--background);
+    position: relative;
+    top: 15svh;
+    font-size: 1rem;
+}
+
+#timerText {
+    font-size: 15rem;
+}
+
+#theme {
+    color: var(--text);
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    animation: spin 1s linear;
+}
+
+#theme:hover {
+    cursor: pointer;
+}
+
+@keyframes spin {
+    0%   {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
+  }

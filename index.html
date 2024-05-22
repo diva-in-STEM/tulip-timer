@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>🌷 Timer</title>
+</head>
+<body>
+    <span id="theme" class="material-symbols-outlined">
+        light_mode
+    </span>
+    <div id="timerContainer">
+        <div class="timer"><p id="timerText">20:00</p></div>
+    </div>
+    <div id="controls">
+        <button id="start" onclick="started = true">Start</button>
+        <button id="stop" onclick="started = false">Stop</button>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
