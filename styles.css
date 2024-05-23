@@ -25,6 +25,16 @@ body {
     cursor: pointer;
 }
 
+#github {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: 2rem;
+}
+
+#github > * {
+    width: 2rem;
+}
 
 #timerContainer {
     width: 50svw;
