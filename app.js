@@ -6,9 +6,10 @@ window.onload = function() {
 }
 
 function update() {
-    var myTime = document.getElementById("timerText").innerHTML;
-    var ss = myTime.split(":");
-    var dt = new Date();
+    const indicator = document.getElementById("indicator");
+    const myTime = document.getElementById("timerText").innerHTML;
+    let ss = myTime.split(":");
+    let dt = new Date();
     dt.setHours(0);
     dt.setMinutes(ss[0]);
     dt.setSeconds(ss[1]);
@@ -16,11 +17,13 @@ function update() {
     if (ss[1] == "00") {
         timer += 1;
         if (timer % 2 == 0) {
-            dt.setMinutes(20);
-            dt.setSeconds(0);
+            dt.setMinutes(0);
+            dt.setSeconds(5);
+            indicator.innerHTML = "WORK";
         } else {
             dt.setMinutes(5);
             dt.setSeconds(0);
+            indicator.innerHTML = "REST";
         }
         dt.setSeconds(dt.getSeconds() - 1);
     } else {

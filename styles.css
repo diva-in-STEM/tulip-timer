@@ -12,6 +12,20 @@ body {
     background-color: var(--background);
 }
 
+#theme {
+    color: var(--text);
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    animation: spin 1s linear;
+}
+
+#theme:hover {
+    cursor: pointer;
+}
+
+
 #timerContainer {
     width: 50svw;
     height: 50svh;
@@ -26,6 +40,12 @@ body {
     transform: translate(-50%, -50%);
     color: var(--text);
     background-color: var(--background);
+}
+
+#indicator {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    opacity: 50%;
 }
 
 #controls {
@@ -47,24 +67,17 @@ button {
     position: relative;
     top: 15svh;
     font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
 }
 
 #timerText {
     font-size: 15rem;
+    font-family: "Gilda Display", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-#theme {
-    color: var(--text);
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    font-size: 2rem;
-    animation: spin 1s linear;
-}
-
-#theme:hover {
-    cursor: pointer;
-}
 
 @keyframes spin {
     0%   {transform: rotate(0deg)}
