@@ -34,7 +34,7 @@ function update() {
     document.getElementById("timerText").innerHTML = ts[1] + ":" + ts[2];
 }
 
-document.getElementById("start").addEventListener("click", function() {
+function toggle() {
     if(!started) {
         if (timerInterval === null) {
             update(); // Initial call to update immediately
@@ -48,7 +48,15 @@ document.getElementById("start").addEventListener("click", function() {
         document.getElementById("start").innerHTML = "play_arrow"
         started = false
     }
-});
+}
+
+window.onkeydown = function(key) {
+    if(key.keyCode === 32) {
+        toggle();
+    }
+}
+
+document.getElementById("start").addEventListener("click", toggle);
 
 document.getElementById("restart").addEventListener("click", function() {
     clearInterval(timerInterval);
