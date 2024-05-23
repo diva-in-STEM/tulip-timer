@@ -12,7 +12,7 @@ function update() {
     dt.setMinutes(ss[0]);
     dt.setSeconds(ss[1]);
 
-    if (ss[0] == "00") {
+    if (ss[0] == "00" && ss[1] == "00") {
         cycles += 1;
         if (cycles % 2 == 0) {
             dt.setMinutes(20);
