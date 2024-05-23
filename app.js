@@ -15,15 +15,14 @@ function update() {
     if (ss[0] == "00" && ss[1] == "00") {
         cycles += 1;
         if (cycles % 2 == 0) {
-            dt.setMinutes(20);
-            dt.setSeconds(0);
-            indicator.innerHTML = "WORK";
-        } else {
             dt.setMinutes(5);
             dt.setSeconds(0);
             indicator.innerHTML = "REST";
+        } else {
+            dt.setMinutes(20);
+            dt.setSeconds(0);
+            indicator.innerHTML = "WORK";
         }
-        dt.setSeconds(dt.getSeconds() - 1);
     } else {
         dt.setSeconds(dt.getSeconds() - 1);
     }
@@ -37,7 +36,7 @@ function update() {
 function toggle() {
     if(!started) {
         if (timerInterval === null) {
-            update(); // Initial call to update immediately
+            update();
             timerInterval = setInterval(update, 1000);
         }
         document.getElementById("start").innerHTML = "pause"
@@ -70,11 +69,10 @@ document.getElementById("restart").addEventListener("click", function() {
     cycles = 1;
 });
 
-
 var r = document.querySelector(':root');
 let theme = "light";
 let themeController = document.getElementById("theme");
-themeController.addEventListener("click", changeTheme)
+themeController.addEventListener("click", changeTheme);
 
 function reset_animation(elementID) {
     var el = document.getElementById(elementID);
