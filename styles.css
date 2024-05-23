@@ -1,6 +1,9 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 :root {
@@ -50,9 +53,6 @@ body {
     transform: translate(-50%, -50%);
     color: var(--text);
     background-color: var(--background);
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 #indicator {
