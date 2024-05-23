@@ -33,13 +33,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3svh;
+    gap: 2svh;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     color: var(--text);
     background-color: var(--background);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #indicator {
@@ -69,6 +72,10 @@ button {
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 #timerText {

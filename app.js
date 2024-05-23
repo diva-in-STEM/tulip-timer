@@ -1,24 +1,22 @@
-let timer = 1;
+let cycles = 1;
 let timerInterval = null;
+let started = false;
+let dt = new Date();
 
-window.onload = function() {
-    timer = 1;
-}
+const indicator = document.getElementById("indicator");
 
 function update() {
-    const indicator = document.getElementById("indicator");
     const myTime = document.getElementById("timerText").innerHTML;
     let ss = myTime.split(":");
-    let dt = new Date();
     dt.setHours(0);
     dt.setMinutes(ss[0]);
     dt.setSeconds(ss[1]);
 
     if (ss[1] == "00") {
-        timer += 1;
-        if (timer % 2 == 0) {
-            dt.setMinutes(0);
-            dt.setSeconds(5);
+        cycles += 1;
+        if (cycles % 2 == 0) {
+            dt.setMinutes(20);
+            dt.setSeconds(0);
             indicator.innerHTML = "WORK";
         } else {
             dt.setMinutes(5);
@@ -37,15 +35,31 @@ function update() {
 }
 
 document.getElementById("start").addEventListener("click", function() {
-    if (timerInterval === null) {
-        update(); // Initial call to update immediately
-        timerInterval = setInterval(update, 1000);
+    if(!started) {
+        if (timerInterval === null) {
+            update(); // Initial call to update immediately
+            timerInterval = setInterval(update, 1000);
+        }
+        document.getElementById("start").innerHTML = "pause"
+        started = true;
+    } else {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        document.getElementById("start").innerHTML = "play_arrow"
+        started = false
     }
 });
 
-document.getElementById("stop").addEventListener("click", function() {
+document.getElementById("restart").addEventListener("click", function() {
     clearInterval(timerInterval);
     timerInterval = null;
+    dt.setMinutes(20);
+    dt.setSeconds(0);
+    document.getElementById("timerText").innerHTML = "20:00";
+    indicator.innerHTML = "WORK";
+    document.getElementById("start").innerHTML = "play_arrow";
+    started = false;
+    cycles = 1;
 });
 
 
@@ -57,7 +71,7 @@ themeController.addEventListener("click", changeTheme)
 function reset_animation(elementID) {
     var el = document.getElementById(elementID);
     el.style.animation = 'none';
-    el.offsetHeight; /* trigger reflow */
+    el.offsetHeight;
     el.style.animation = null; 
 }
 
