@@ -11,6 +11,7 @@ function getWT(value) {
     if(document.getElementById("workTime").checkValidity() && document.getElementById("workTime").value !== "00:00") {
         let time = value.split(":");
         wT = time;
+        document.getElementById("timerText").innerHTML = wT[0] + ":" + wT[1]
     } else {
         alert("Please enter time in format MM:SS. Time must be greater than 0 seconds");
     }
