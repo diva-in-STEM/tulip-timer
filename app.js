@@ -7,13 +7,21 @@ let rT = ["05", "00"];
 let currentPhase = "work"; // Keep track of the current phase
 
 function getWT(value) {
-    let time = value.split(":");
-    wT = time;
+    if(document.getElementById("workTime").checkValidity() && document.getElementById("workTime").value != "00:00") {
+        let time = value.split(":");
+        wT = time;
+    } else {
+        alert("Please enter time in format MM:SS. Time must be greater than 0 seconds");
+    }
 }
 
 function getRT(value) {
-    let time = value.split(":");
-    rT = time;
+    if(document.getElementById("restTime").checkValidity() && document.getElementById("restTime").value != "00:00") {
+        let time = value.split(":");
+        rT = time;
+    } else {
+        alert("Please enter time in format MM:SS. Time must be greater than 0 seconds");
+    }
 }
 
 const indicator = document.getElementById("indicator");
