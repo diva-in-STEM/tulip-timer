@@ -7,7 +7,8 @@ let rT = ["05", "00"];
 let currentPhase = "work"; // Keep track of the current phase
 
 function getWT(value) {
-    if(document.getElementById("workTime").checkValidity() && document.getElementById("workTime").value != "00:00") {
+    console.log(document.getElementById("workTime").value)
+    if(document.getElementById("workTime").checkValidity() && document.getElementById("workTime").value !== "00:00") {
         let time = value.split(":");
         wT = time;
     } else {
@@ -16,7 +17,7 @@ function getWT(value) {
 }
 
 function getRT(value) {
-    if(document.getElementById("restTime").checkValidity() && document.getElementById("restTime").value != "00:00") {
+    if(document.getElementById("restTime").checkValidity() && document.getElementById("restTime").value !== "00:00") {
         let time = value.split(":");
         rT = time;
     } else {
