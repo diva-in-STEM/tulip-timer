@@ -28,15 +28,103 @@ body {
     cursor: pointer;
 }
 
-#github {
+
+#github > a > img {
+    width: 2rem;
+    padding-left: 0.2rem;
+}
+
+#menuButton {
+    color: var(--text);
     position: absolute;
     left: 1rem;
     top: 1rem;
-    width: 2rem;
+    font-size: 2rem;
+    z-index: 1;
 }
 
-#github > * {
-    width: 2rem;
+#menuButton:hover {
+    cursor: pointer;
+}
+
+#menu {
+    height: 60svh;
+    width: 55svw;
+    padding: 7svh 1rem;
+    display: none;
+    position: relative;
+}
+
+#menuItems {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2svh;
+    height: 60svh;
+    width: 50svw;
+}
+
+.menuItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--text);
+}
+
+.menuItem a {
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.25rem;
+}
+
+.menuItem a:hover {
+    cursor: pointer;
+}
+
+.menuItem span {
+    font-size: 2.3rem;
+    color: #24292f;
+}
+
+.menuItem input {
+    background-color: var(--background);
+    border: none;
+    font-size: 1.25rem;
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    width: 4.5rem;
+}
+
+::placeholder {
+    color: var(--text);
+    opacity: 1;
+}
+  
+::-ms-input-placeholder {
+    color: var(--text);
+    opacity: 1;
+}
+
+.menuItem input:focus {
+    outline: none;
+    border: none;
+}
+
+.menuItem input:invalid{
+    color:rgb(223, 108, 131);
+}
+
+.menuItem input:valid{
+    color:rgb(134, 153, 99);
 }
 
 #timerContainer {
@@ -79,7 +167,7 @@ button {
     color: var(--background);
     position: relative;
     top: 15svh;
-    font-size: 1rem;
+    font-size: 1svw;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }

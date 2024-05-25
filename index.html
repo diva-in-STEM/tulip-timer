@@ -15,7 +15,13 @@
     <title>timer</title>
 </head>
 <body>
-    <a href="https://github.com/diva-in-STEM/tulip-timer" target="_blank" rel="noopener noreferrer" id="github"><img src="./assets/github-mark.svg" alt="GitHub Icon"></a>
+    <span id="menuButton" class="material-symbols-outlined">menu</span>
+    <div id="menu">
+        <div id="menuItems">
+            <div class="menuItem"><span class="material-icons">schedule</span> <input type="text" id="workTime" pattern="(0[0-9]|1[0-9])(:[0-5][0-9])" placeholder="20:00" autocomplete="off" onchange="getWT(this.value)"> / <input type="text" id="restTime" pattern="(0[0-9]|1[0-9])(:[0-5][0-9])" placeholder="05:00" autocomplete="off" onchange="getRT(this.value)"></div>
+            <div class="menuItem" id="github"><a href="https://github.com/diva-in-STEM/tulip-timer" target="_blank" rel="noopener noreferrer"><img src="./assets/github-mark.svg" alt="GitHub Icon"> Visit my GitHub</a></div>
+        </div>
+    </div>
     <span id="theme" class="material-symbols-outlined">
         light_mode
     </span>
