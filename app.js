@@ -7,7 +7,6 @@ let rT = ["05", "00"];
 let currentPhase = "work"; // Keep track of the current phase
 
 function getWT(value) {
-    console.log(document.getElementById("workTime").value)
     if(document.getElementById("workTime").checkValidity() && document.getElementById("workTime").value !== "00:00") {
         let time = value.split(":");
         wT = time;
@@ -141,4 +140,63 @@ menuButton.addEventListener("click", function() {
     }
 });
 
+function makeItRain() {
+    // Clear out everything
+    document.querySelectorAll('.rain').forEach(element => element.innerHTML = '');
 
+    var increment = 0;
+    var drops = "";
+    var backDrops = "";
+
+    while (increment < 50) {
+        // Couple random numbers to use for various randomizations
+        // Random number between 98 and 1
+        var randoHundo = Math.floor(Math.random() * (98 - 1 + 1) + 1);
+        // Random number between 5 and 2
+        var randoFiver = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+        // Increment
+        increment += randoFiver;
+        // Add in a new raindrop with various randomizations to certain CSS properties
+        drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver * 2 - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.6s;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.6s;"></div><div class="splat" style="animation-delay: 0.6' + randoHundo + 's; animation-duration: 0.3s; bottom: -10px;"></div></div>';
+        backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver * 2 - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.6s;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.6s;"></div><div class="splat" style="animation-delay: 0.6' + randoHundo + 's; animation-duration: 0.3s; bottom: -10px;"></div></div>';
+    }
+
+    document.querySelector('.rain.front-row').innerHTML = drops;
+    document.querySelector('.rain.back-row').innerHTML = backDrops;
+}
+
+let raining = false;
+let rainSound = new Howl({
+    src: ['./assets/audio/Rain Sound.ogg'],
+    autoplay: false,
+    loop: true
+})
+
+document.getElementById("rainButton").addEventListener("click", function() {
+    if(!raining) {
+        raining = true;
+        makeItRain();
+        rainSound.fade(0, 1, 1000);
+        rainSound.play();
+        r.style.setProperty('--background', '#446879');
+        r.style.setProperty('--text', '#0b0b0b');
+        themeController.style.display = "none";
+    } else {
+        raining = false;
+        rainSound.pause();
+        rainSound.fade(1, 0, 1000);
+        document.querySelectorAll('.drop').forEach(drop => {
+            drop.style.animationPlayState = 'paused';
+            drop.style.webkitAnimationPlayState = 'paused'; // for Safari
+        });
+        document.querySelectorAll('.drop').forEach(drop => drop.remove());
+        themeController.style.display = "block";
+        if(theme == 'dark') {
+            r.style.setProperty('--background', '#0b0b0b');
+            r.style.setProperty('--text', '#E6D5C8');
+        } else {
+            r.style.setProperty('--background', '#E6D5C8');
+            r.style.setProperty('--text', '#0b0b0b');
+        }
+    }
+})

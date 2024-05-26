@@ -9,12 +9,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Poppins:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
-    <link rel="shortcut icon" href="./assets/android-chrome-192x192.png">
+    <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="./assets/images/android-chrome-192x192.png">
     <title>timer</title>
 </head>
 <body>
+    <div class="rain front-row"></div>
+    <div class="rain back-row"></div>
     <span id="menuButton" class="material-symbols-outlined">menu</span>
     <div id="menu">
         <div id="menuItems">
@@ -24,9 +26,13 @@
                 / 
                 <input type="text" id="restTime" pattern="([0-5][0-9]):([0-5][0-9])" placeholder="05:00" autocomplete="off" onchange="getRT(this.value)">
             </div>
+            <div class="menuItem" id="rainButton">
+                <span class="material-icons">water_drop</span> 
+                <p>Rain</p>
+            </div>
             <div class="menuItem" id="github">
                 <a href="https://github.com/diva-in-STEM/tulip-timer" target="_blank" rel="noopener noreferrer">
-                    <img src="./assets/github-mark.svg" alt="GitHub Icon"> Visit my GitHub
+                    <img src="./assets/images/github-mark.svg" alt="GitHub Icon"> Visit my GitHub
                 </a>
             </div>
         </div>
@@ -42,6 +48,7 @@
         <button id="start" class="material-icons">play_arrow</button>
         <button id="restart" class="material-icons">replay</button>
     </div>
+    <script src="./howlerJS/howler.core.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>

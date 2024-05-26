@@ -13,6 +13,7 @@
 
 body {
     background-color: var(--background);
+    overflow: hidden;
 }
 
 #theme {
@@ -75,6 +76,10 @@ body {
     color: var(--text);
 }
 
+.menuItem:nth-child(2) {
+    gap: 1.5rem
+}
+
 .menuItem a {
     text-align: center;
     text-decoration: none;
@@ -82,11 +87,11 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    gap: 1.75rem;
     font-size: 1.25rem;
 }
 
-.menuItem a:hover {
+.menuItem a:hover, .menuItem:nth-child(2):hover {
     cursor: pointer;
 }
 
@@ -141,7 +146,6 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     color: var(--text);
-    background-color: var(--background);
 }
 
 #indicator {
@@ -171,6 +175,7 @@ button {
     font-size: 1svw;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
+    z-index: 1;
 }
 
 button:hover {
@@ -189,4 +194,47 @@ button:hover {
     0%   {transform: rotate(0deg)}
     50% {transform: rotate(45deg)}
     100%   {transform: rotate(0deg)}
-  }
+}
+
+.rain {
+    position: absolute;
+    left: 0;
+    width: 110%;
+    top: 15%;
+    height: 85%;
+    z-index: -1;
+}
+
+.rain.back-row {
+    z-index: -1;
+    bottom: 60px;
+    opacity: 0.5;
+}
+
+.drop {
+    position: absolute;
+    bottom: 100%;
+    width: 0.5px;
+    height: 120px;
+    pointer-events: none;
+    animation: drop 0.6s linear infinite;
+    background: rgb(130, 166, 187);
+    background: linear-gradient(0deg, rgba(130, 166, 187,0.7497373949579832) 35%, rgba(0,0,0,0) 100%);
+}
+
+.drop:nth-child(10) {
+    display: block;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(0vh);
+    }
+    75% {
+        transform: translateY(90vh);
+    }
+    100% {
+        transform: translateY(90vh);
+        opacity: 0;
+    }
+}
