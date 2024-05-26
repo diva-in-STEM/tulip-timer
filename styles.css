@@ -76,7 +76,7 @@ body {
     color: var(--text);
 }
 
-.menuItem:nth-child(2) {
+.menuItem:nth-child(2), .menuItem:nth-child(3) {
     gap: 1.5rem
 }
 
@@ -91,7 +91,7 @@ body {
     font-size: 1.25rem;
 }
 
-.menuItem a:hover, .menuItem:nth-child(2):hover {
+.menuItem a:hover, .menuItem:nth-child(2):hover, .menuItem:nth-child(3):hover {
     cursor: pointer;
 }
 
@@ -236,5 +236,220 @@ button:hover {
     100% {
         transform: translateY(90vh);
         opacity: 0;
+    }
+}
+
+#campfire {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    height: 15vw;
+    width: 15vw;
+    display: none;
+}
+
+#campfire .flames {
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.flame {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    width: 0%;
+    height: 0%;
+    background-color: #FFDC01;
+    border-radius: 1vw;
+}
+
+.flame:nth-child(2n + 1) {
+    animation: flameodd 1.5s ease-in infinite;
+}
+
+.flame:nth-child(2n) {
+    animation: flameeven 1.5s ease-in infinite;
+}
+
+.flame:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.flame:nth-child(2) {
+    animation-delay: calc(1.5s / 4);
+}
+
+.flame:nth-child(3) {
+    animation-delay: calc(1.5s / 4 * 2);
+}
+
+.flame:nth-child(4) {
+    animation-delay: calc(1.5s / 4 * 3);
+}
+
+.smoke {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background-color: rgba(200, 200, 200, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.smoke:nth-child(2n+1) {
+    animation: smokeOdd 2s linear infinite;
+}
+
+.smoke:nth-child(2n) {
+    animation: smokeEven 2s linear infinite;
+}
+
+.smoke:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.smoke:nth-child(2) {
+    animation-delay: calc(1.5s / 4);
+}
+
+.smoke:nth-child(3) {
+    animation-delay: calc(1.5s / 4 * 2);
+}
+
+.smoke:nth-child(4) {
+    animation-delay: calc(1.5s / 4 * 3);
+}
+
+@keyframes smokeOdd {
+    0% {
+        opacity: 0;
+        top: 0;
+    }
+    50% {
+        top: -50%;
+    }
+    100% {
+        opacity: 1;
+        top: -200%;
+        left: 90%;
+    }
+}
+
+@keyframes smokeEven {
+    0% {
+        opacity: 0;
+        top: 0;
+    }
+    50% {
+        top: -50%;
+    }
+    100% {
+        opacity: 1;
+        top: -200%;
+        left: 10%;
+    }
+}
+
+.logs {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 15%;
+}
+
+.logs::before, .logs::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(20deg);
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5vw;
+    background-color: #70392F;
+}
+
+.logs::before {
+    transform: translate(-50%, -50%) rotate(-20deg);
+    background-color: #612E25;
+}
+
+@keyframes flameodd {
+    0%, 100% {
+        width: 0%;
+        height: 0%;
+    }
+    25% {
+        width: 100%;
+        height: 100%;
+    }
+    0% {
+        background-color: #FFDC01;
+        z-index: 1000000;
+    }
+    40% {
+        background-color: #FDAC01;
+        z-index: 1000000;
+    }
+    100% {
+        background-color: #F73B01;
+        z-index: -10;
+    }
+    0% {
+        right: 0%;
+        bottom: 0%;
+    }
+    25% {
+        right: 1%;
+        bottom: 2%;
+    }
+    100% {
+        right: 150%;
+        bottom: 170%;
+    }
+}
+
+@keyframes flameeven {
+    0%, 100% {
+        width: 0%;
+        height: 0%;
+    }
+    25% {
+        width: 100%;
+        height: 100%;
+    }
+    0% {
+        background-color: #FFDC01;
+        z-index: 1000000;
+    }
+    40% {
+        background-color: #FDAC01;
+        z-index: 1000000;
+    }
+    100% {
+        background-color: #F73B01;
+        z-index: -10;
+    }
+    0% {
+        right: 0%;
+        bottom: 0%;
+    }
+    25% {
+        right: 2%;
+        bottom: 1%;
+    }
+    100% {
+        right: 170%;
+        bottom: 150%;
     }
 }

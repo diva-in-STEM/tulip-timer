@@ -184,7 +184,6 @@ document.getElementById("rainButton").addEventListener("click", function() {
     } else {
         raining = false;
         rainSound.pause();
-        rainSound.fade(1, 0, 1000);
         document.querySelectorAll('.drop').forEach(drop => {
             drop.style.animationPlayState = 'paused';
             drop.style.webkitAnimationPlayState = 'paused'; // for Safari
@@ -198,5 +197,26 @@ document.getElementById("rainButton").addEventListener("click", function() {
             r.style.setProperty('--background', '#E6D5C8');
             r.style.setProperty('--text', '#0b0b0b');
         }
+    }
+})
+
+let burning = false;
+let fireSound = new Howl({
+    src: ['./assets/audio/Campfire Sound.ogg'],
+    autoplay: false,
+    loop: true
+})
+const fire = document.getElementById("campfire");
+
+document.getElementById("fireButton").addEventListener("click", function() {
+    if(!burning) {
+        burning = true;
+        fire.style.display = "block";
+        fireSound.fade(0, 1, 1000);
+        fireSound.play();
+    } else {
+        burning = false;
+        fire.style.display = "none";
+        fireSound.pause();
     }
 })
