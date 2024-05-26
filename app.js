@@ -131,17 +131,16 @@ let menuState = "closed";
 menuButton.addEventListener("click", function() {
     if (menuState == "closed") {
         menuButton.innerHTML = "close";
-        menu.style.display = "block";
+        menu.style.opacity = '1';
         menuState = "open";
     } else {
         menuButton.innerHTML = "menu";
-        menu.style.display = "none";
+        menu.style.opacity = '0';
         menuState = "closed";
     }
 });
 
 function makeItRain() {
-    // Clear out everything
     document.querySelectorAll('.rain').forEach(element => element.innerHTML = '');
 
     var increment = 0;

@@ -52,8 +52,8 @@ body {
     height: 60svh;
     width: 55svw;
     padding: 7svh 1rem;
-    display: none;
-    position: relative;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
 }
 
 #menuItems {
