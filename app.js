@@ -128,17 +128,38 @@ const menuButton = document.getElementById("menuButton");
 const menu = document.getElementById("menu");
 let menuState = "closed";
 
-menuButton.addEventListener("click", function () {
+menuButton.addEventListener("click", function() {
     if (menuState == "closed") {
         menuButton.innerHTML = "close";
-        menu.style.opacity = '1';
+        menu.style.display = "block";
+        menu.style.opacity = "1"
+        // Trigger reflow to ensure the transition happens
+        menu.offsetHeight;
+        menu.classList.add("active");
+        menu.classList.remove("inactive");
         menuState = "open";
     } else {
         menuButton.innerHTML = "menu";
-        menu.style.opacity = '0';
+        menu.classList.remove("active");
+        menu.classList.add("inactive");
+        // Delay setting display:none to allow for transition
+        setTimeout(() => {
+            menu.style.display = "none";
+        }, 500); // Match the duration of your CSS transition
         menuState = "closed";
     }
 });
+
+// Initialize menu as inactive to prevent interaction
+menu.classList.add("inactive");
+
+menu.addEventListener("transitionend", function(event) {
+    if (menuState == "open" && event.propertyName === "opacity") {
+        menu.classList.add("active");
+        menu.classList.remove("inactive");
+    }
+});
+
 
 function makeItRain() {
     document.querySelectorAll('.rain').forEach(element => element.innerHTML = '');
