@@ -53,7 +53,17 @@ body {
     width: 55svw;
     padding: 7svh 1rem;
     opacity: 0;
-    transition: all 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    display: none;
+}
+
+#menu.active {
+    display: block;
+    pointer-events: auto;
+}
+
+#menu.inactive {
+    pointer-events: none;
 }
 
 #menuItems {
@@ -63,6 +73,16 @@ body {
     gap: 2svh;
     height: 60svh;
     width: 50svw;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#menu.active #menuItems {
+    opacity: 1;
+}
+
+#menu.inactive #menuItems {
+    opacity: 0;
 }
 
 .menuItem {
