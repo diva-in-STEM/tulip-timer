@@ -1,24 +1,24 @@
 let cycles = 1;
 let timerInterval = null;
 let started = false;
-let dt = new Date();
+let dt = new Date(0, 0, 0, 0, 20, 0);  // Set initial time
 let wT = ["20", "00"];
 let rT = ["05", "00"];
-let currentPhase = "work"; // Keep track of the current phase
+let currentPhase = "work";  // Keep track of the current phase
 
 function getWT(value) {
-    if(document.getElementById("workTime").checkValidity() && document.getElementById("workTime").value !== "00:00") {
+    if (document.getElementById("workTime").checkValidity() && document.getElementById("workTime").value !== "00:00") {
         let time = value.split(":");
         wT = time;
         document.getElementById("timerText").innerHTML = wT[0] + ":" + wT[1];
-        initializeTimer()
+        initializeTimer();
     } else {
         alert("Please enter time in format MM:SS. Time must be greater than 0 seconds");
     }
 }
 
 function getRT(value) {
-    if(document.getElementById("restTime").checkValidity() && document.getElementById("restTime").value !== "00:00") {
+    if (document.getElementById("restTime").checkValidity() && document.getElementById("restTime").value !== "00:00") {
         let time = value.split(":");
         rT = time;
     } else {
@@ -38,12 +38,19 @@ function initializeTimer() {
         dt.setSeconds(parseInt(rT[1]));
         indicator.innerHTML = "REST";
     }
+    updateTimerText();
+}
+
+function updateTimerText() {
+    let minutes = String(dt.getMinutes()).padStart(2, '0');
+    let seconds = String(dt.getSeconds()).padStart(2, '0');
+    document.getElementById("timerText").innerHTML = minutes + ":" + seconds;
 }
 
 function update() {
     if (dt.getMinutes() === 0 && dt.getSeconds() === 0) {
         cycles += 1;
-        if (cycles % 2 == 0) {
+        if (cycles % 2 === 0) {
             currentPhase = "rest";
         } else {
             currentPhase = "work";
@@ -52,17 +59,12 @@ function update() {
     } else {
         dt.setSeconds(dt.getSeconds() - 1);
     }
-
-    var temp = dt.toTimeString().split(" ");
-    var ts = temp[0].split(":");
-
-    document.getElementById("timerText").innerHTML = ts[1] + ":" + ts[2];
+    updateTimerText();
 }
 
 function toggle() {
     if (!started) {
         if (timerInterval === null) {
-            initializeTimer();
             update();
             timerInterval = setInterval(update, 1000);
         }
@@ -76,7 +78,7 @@ function toggle() {
     }
 }
 
-window.onkeydown = function(key) {
+window.onkeydown = function (key) {
     if (key.keyCode === 32) {
         toggle();
     }
@@ -84,14 +86,12 @@ window.onkeydown = function(key) {
 
 document.getElementById("start").addEventListener("click", toggle);
 
-document.getElementById("restart").addEventListener("click", function() {
+document.getElementById("restart").addEventListener("click", function () {
     clearInterval(timerInterval);
     timerInterval = null;
     cycles = 1;
     currentPhase = "work";
     initializeTimer();
-    document.getElementById("timerText").innerHTML = wT[0] + ":" + wT[1];
-    indicator.innerHTML = "WORK";
     document.getElementById("start").innerHTML = "play_arrow";
     started = false;
 });
@@ -128,7 +128,7 @@ const menuButton = document.getElementById("menuButton");
 const menu = document.getElementById("menu");
 let menuState = "closed";
 
-menuButton.addEventListener("click", function() {
+menuButton.addEventListener("click", function () {
     if (menuState == "closed") {
         menuButton.innerHTML = "close";
         menu.style.opacity = '1';
@@ -171,8 +171,8 @@ let rainSound = new Howl({
     loop: true
 })
 
-document.getElementById("rainButton").addEventListener("click", function() {
-    if(!raining) {
+document.getElementById("rainButton").addEventListener("click", function () {
+    if (!raining) {
         raining = true;
         makeItRain();
         rainSound.fade(0, 1, 1000);
@@ -189,7 +189,7 @@ document.getElementById("rainButton").addEventListener("click", function() {
         });
         document.querySelectorAll('.drop').forEach(drop => drop.remove());
         themeController.style.display = "block";
-        if(theme == 'dark') {
+        if (theme == 'dark') {
             r.style.setProperty('--background', '#0b0b0b');
             r.style.setProperty('--text', '#E6D5C8');
         } else {
@@ -207,8 +207,8 @@ let fireSound = new Howl({
 })
 const fire = document.getElementById("campfire");
 
-document.getElementById("fireButton").addEventListener("click", function() {
-    if(!burning) {
+document.getElementById("fireButton").addEventListener("click", function () {
+    if (!burning) {
         burning = true;
         fire.style.display = "block";
         fireSound.fade(0, 1, 1000);
@@ -218,4 +218,4 @@ document.getElementById("fireButton").addEventListener("click", function() {
         fire.style.display = "none";
         fireSound.pause();
     }
-})
+});
