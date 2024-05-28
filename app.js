@@ -45,6 +45,7 @@ function updateTimerText() {
     let minutes = String(dt.getMinutes()).padStart(2, '0');
     let seconds = String(dt.getSeconds()).padStart(2, '0');
     document.getElementById("timerText").innerHTML = minutes + ":" + seconds;
+    document.title = minutes + ":" + seconds + " " + indicator.innerHTML.toLowerCase();
 }
 
 function update() {
