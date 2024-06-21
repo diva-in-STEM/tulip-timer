@@ -79,7 +79,7 @@ function toggle() {
     }
 }
 
-window.onkeydown = function (key) {
+window.onkeyup = function (key) {
     if (key.keyCode === 32) {
         toggle();
     }
